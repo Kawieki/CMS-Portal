@@ -20,8 +20,8 @@ public static class SlugGenerator
 
     public static string Generate(string title)
     {
-        var slug = RemoveDiacritics(title);
-        slug = slug.ToLower();
+        var slug = title.ToLower();
+        slug = RemoveDiacritics(slug);
         slug = Regex.Replace(slug, @"\s+", "-");
         slug = Regex.Replace(slug, @"[^a-z0-9\-]", "");
         slug = Regex.Replace(slug, "-+", "-");
