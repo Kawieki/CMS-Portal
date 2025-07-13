@@ -56,51 +56,22 @@ public class ArticlesController : ControllerBase
     [HttpGet("{articleId:guid}")]
     public async Task<IActionResult> GetArticle(Guid articleId)
     {
-        try
-        {
-            var article = await _getArticleDetails.HandleAsync(articleId);
-            return Ok(article);
-        }
-        catch (KeyNotFoundException)
-        {
-            return NotFound();
-        }
+        var article = await _getArticleDetails.HandleAsync(articleId);
+        return Ok(article);
     }
 
     [HttpPut("{articleId:guid}")]
     public async Task<IActionResult> UpdateArticle(Guid articleId, [FromBody] UpdateArticleDto dto)
     {
-        try
-        {
-            await _updateArticle.HandleAsync(articleId, dto);
-            return Ok();
-        }
-        catch (KeyNotFoundException)
-        {
-            return NotFound();
-        }
-        catch (Exception ex)
-        {
-            return BadRequest(ex.Message);
-        }
+        await _updateArticle.HandleAsync(articleId, dto);
+        return Ok();
     }
 
     [HttpPost("{articleId:guid}/publish")]
     public async Task<IActionResult> PublishArticle(Guid articleId)
     {
-        try
-        {
-            await _publishArticle.HandleAsync(articleId);
-            return Ok();
-        }
-        catch (KeyNotFoundException)
-        {
-            return NotFound();
-        }
-        catch (Exception ex)
-        {
-            return BadRequest(ex.Message);
-        }
+        await _publishArticle.HandleAsync(articleId);
+        return Ok();
     }
 
     [HttpGet("stats")]
