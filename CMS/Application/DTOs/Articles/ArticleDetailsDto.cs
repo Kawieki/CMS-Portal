@@ -11,5 +11,5 @@ public class ArticleDetailsDto
     public string Slug { get; set; } = null!;
     public ArticleStatus Status { get; set; }
     public DateTime CreatedAt { get; set; }
-    public Guid CategoryId { get; set; }
+    public Guid? CategoryId { get; set; }
 }
