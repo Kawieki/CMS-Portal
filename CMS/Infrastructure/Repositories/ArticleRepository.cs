@@ -31,10 +31,9 @@ public class ArticleRepository : IArticleRepository
         return await query.OrderByDescending(a => a.CreatedAt).ToListAsync();
     }
 
-    public Task<Article> GetByIdAsync(Guid id)
+    public Task<Article?> GetByIdAsync(Guid id)
     {
         var article = _dbContext.Articles
-            .AsNoTracking()
             .FirstOrDefaultAsync(a => a.Id == id);
         return article;
     }
@@ -44,10 +43,9 @@ public class ArticleRepository : IArticleRepository
         _dbContext.Articles.Update(article);
         await _dbContext.SaveChangesAsync();
     }
-
-    public async Task PublishAsync(Guid id)
+    
+    public async Task PublishAsync(Article article)
     {
-        var article = await GetByIdAsync(id);
         article.Publish();
         await _dbContext.SaveChangesAsync();
     }
