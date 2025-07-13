@@ -13,19 +13,16 @@ public class GetArticles
         _articleRepository = articleRepository;
     }
     
-    public async Task<IEnumerable<ArticleDetailsDto>> HandleAsync(ArticleStatus? status = null)
+    public async Task<IEnumerable<ArticleListDto>> HandleAsync(ArticleStatus? status = null)
     {
         var articles = await _articleRepository.GetAllAsync(status);
         
-        return articles.Select(article => new ArticleDetailsDto
+        
+        return articles.Select(article => new ArticleListDto
         {
             Id = article.Id,
             Title = article.Title,
-            Content = article.Content,
-            Author = article.Author,
             Slug = article.Slug,
-            CategoryId = article.CategoryId,
-            CreatedAt = article.CreatedAt
         });
     }
     

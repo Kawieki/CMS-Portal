@@ -1,4 +1,5 @@
 using Application.DTOs.Articles;
+using Application.Exceptions;
 using Domain.Interfaces;
 
 namespace Application.UseCases.Articles;
@@ -14,7 +15,11 @@ public class GetArticleDetails
 
     public async Task<ArticleDetailsDto> HandleAsync(Guid id)
     {
-        var article = await _articleRepository.GetDetailsByIdAsync(id);
+        var article = await _articleRepository.GetByIdAsync(id);
+
+        if (article == null)
+            throw new NotFoundException($"Artykuł o ID {id} nie istnieje.");
+    
 
         return new ArticleDetailsDto
         {
@@ -23,6 +28,7 @@ public class GetArticleDetails
             Content = article.Content,
             Author = article.Author,
             Slug = article.Slug,
+            Status = article.Status,
             CategoryId = article.CategoryId,
             CreatedAt = article.CreatedAt
         };
