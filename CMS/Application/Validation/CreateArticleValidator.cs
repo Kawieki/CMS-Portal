@@ -2,7 +2,7 @@ using Application.DTOs.Articles;
 
 namespace Application.Validation;
 
-public class ArticleValidator : IValidator<CreateArticleDto>
+public class CreateArticleValidator : IValidator<CreateArticleDto>
 {
     private const int MinContentLength = 10;
     
