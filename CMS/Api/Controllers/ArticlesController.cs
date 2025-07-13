@@ -35,15 +35,8 @@ public class ArticlesController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateArticle([FromBody] CreateArticleDto dto)
     {
-        try
-        {
-            var articleId = await _createArticle.HandleAsync(dto);
-            return CreatedAtAction(nameof(GetArticle), new { articleId }, new { Id = articleId });
-        }
-        catch (Exception ex)
-        {
-            return BadRequest(ex.Message);
-        }
+        var articleId = await _createArticle.HandleAsync(dto);
+        return CreatedAtAction(nameof(GetArticle), new { articleId }, new { Id = articleId });
     }
 
     [HttpGet]
