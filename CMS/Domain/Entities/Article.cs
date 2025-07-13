@@ -11,7 +11,7 @@ public class Article
     public string Slug { get; private set; }
     public ArticleStatus Status { get; private set; }
     public DateTime CreatedAt { get; private set; }
-    public Guid CategoryId { get; set; }
+    public Guid? CategoryId { get; set; }
     private const int MinContentLength = 10;
     
     public Article(string title, string content, string author, string slug)
@@ -25,7 +25,7 @@ public class Article
         Status = ArticleStatus.Draft;
     }
     
-    public void Update(string? title, string? content, string? author, Guid? categoryId)
+    public void Update(string? title, string? content, string? author, Guid? categoryId, string? slug)
     {
         if (!string.IsNullOrWhiteSpace(title))
             SetTitle(title);
@@ -38,6 +38,9 @@ public class Article
 
         if (categoryId.HasValue)
             SetCategory(categoryId.Value);
+        
+        if (!string.IsNullOrWhiteSpace(slug))
+            Slug = slug;
     }
 
     public void Publish()
