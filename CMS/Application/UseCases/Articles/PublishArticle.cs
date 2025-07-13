@@ -1,3 +1,4 @@
+using Application.Exceptions;
 using Domain.Enums;
 using Domain.Interfaces;
 
@@ -16,15 +17,11 @@ public class PublishArticle
     {
         var article = await _articleRepository.GetByIdAsync(id);
         if (article == null)
-        {
-            throw new Exception("Article not found");
-        }
+            throw new NotFoundException($"Artykuł o ID {id} nie istnieje.");
 
         if (article.Status != ArticleStatus.Draft)
-        {
-            throw new Exception("Article is not in draft status");
-        }
+            throw new ArticleAlreadyPublishedException(id);
 
-        await _articleRepository.PublishAsync(id);
+        await _articleRepository.PublishAsync(article);
     }
 }
