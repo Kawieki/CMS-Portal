@@ -29,7 +29,6 @@ builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 // Services
 builder.Services.AddScoped<ArticleStatsService>();
-// builder.Services.AddScoped<IArticleStatsService, ArticleStatsService>();
 builder.Services.AddScoped<ISlugService, SlugService>();
 
 // Validators
