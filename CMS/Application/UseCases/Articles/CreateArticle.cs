@@ -3,7 +3,6 @@ using Application.Exceptions;
 using Application.Services;
 using Application.Validation;
 using Domain.Entities;
-using Domain.Helpers;
 using Domain.Interfaces;
 
 namespace Application.UseCases.Articles;
@@ -31,9 +30,10 @@ public class CreateArticle
             throw new ValidationException(errors);
         
         var slug = await _slugService.GenerateUniqueSlugAsync(dto.Title);
-        
         var article = new Article(dto.Title, dto.Content, dto.Author, slug);
+        
         await _articleRepository.AddAsync(article);
+        
         return article.Id;
         
     }
