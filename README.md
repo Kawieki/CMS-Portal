@@ -20,12 +20,24 @@ Aplikacja CMS do zarządzania artykułami i kategoriami, napisana w .NET 8 z zgo
 - Prosty system kategorii przypisywanych do artykułów.
 - Statystyki: liczba artykułów opublikowanych/draft, najczęściej używana kategoria.
 
+### Technologie
+
+- .NET 8
+- ASP.NET Core
+- Entity Framework Core
+- SQL Server
+- xUnit (testy)
+- Docker
+- Clean Architecture
+- Moq
+
 ---
 
 ## Uruchomienie lokalne
 
 1. Wymagania: .NET 8 SDK, baza SQL Server
-2. Przygotuj bazę danych i ustaw connection string w `Api/appsettings.json`. lub podaj go przez zmienną środowiskową.
+2. Przygotuj bazę danych i ustaw connection string w `Api/appsettings.json` lub podaj go przez zmienną środowiskową.
+   > **Uwaga:** Projekt używa Entity Framework Code First. Przy pierwszym uruchomieniu baza zostanie automatycznie utworzona z przykładowymi danymi.
 3. Zbuduj projekt:
    ```sh
    make build
@@ -55,6 +67,14 @@ Aplikacja CMS do zarządzania artykułami i kategoriami, napisana w .NET 8 z zgo
 3. Aplikacja dostępna pod: [http://localhost:5001/swagger](http://localhost:5001/swagger)
 
 > **Uwaga:** Domyślny connection string wymaga bazy SQL Server. Możesz podać własny przez zmienną środowiskową `ConnectionStrings__DefaultConnection`.
+
+## Uruchomienie przez Docker Compose
+
+1. Uruchom wszystkie usługi (aplikacja + baza SQL Server):
+   ```sh
+   docker compose up --build
+   ```
+2. Aplikacja dostępna pod: http://localhost:5001/swagger (dla domyślnie ustawionej zmiennej ASPNETCORE_ENVIRONMENT: Development w docker-compose.yaml)
 
 ---
 
