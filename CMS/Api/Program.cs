@@ -53,6 +53,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseHttpsRedirection();   
 }
 
 app.UseExceptionHandler(errorApp =>
@@ -88,16 +89,15 @@ app.UseExceptionHandler(errorApp =>
     });
 });
 
-app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
-
 
 // Seed the database
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     var dbContext = services.GetRequiredService<CmsDbContext>();
+    dbContext.Database.Migrate();  
     await DbSeeder.SeedAsync(dbContext);
 }
 
