@@ -161,3 +161,5 @@ make test
 ```
 
 ---
+
+## Autor: Łukasz Wiszniewski
