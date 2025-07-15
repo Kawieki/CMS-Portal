@@ -17,7 +17,7 @@ services:
             - "5001:80"
         environment:
             ASPNETCORE_URLS: http://+:80
-            ASPNETCORE_ENVIRONMENT: Production
+            ASPNETCORE_ENVIRONMENT: Development
             ConnectionStrings__DefaultConnection: "Server=sqlserver,1433;Database=CMSDb;User Id=sa;Password=yourStrong(!)Password;Encrypt=False;TrustServerCertificate=False"
 
 

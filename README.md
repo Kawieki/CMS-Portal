@@ -66,7 +66,23 @@ Aplikacja CMS do zarządzania artykułami i kategoriami, napisana w .NET 8 z zgo
    ```
 3. Aplikacja dostępna pod: [http://localhost:5001/swagger](http://localhost:5001/swagger)
 
-> **Uwaga:** Domyślny connection string wymaga bazy SQL Server. Możesz podać własny przez zmienną środowiskową `ConnectionStrings__DefaultConnection`.
+---
+
+### Connection string do bazy SQL Server
+
+Aplikacja domyślnie łączy się z bazą SQL Server pod adresem:
+
+```
+Server=host.docker.internal,1433;User Id=SA;Password=yourStrong(!)Password;Encrypt=False;TrustServerCertificate=True;
+```
+
+Można zmienić connection string edytując zmienną `CONN` w pliku `Makefile` lub przekazując go podczas uruchamiania:
+
+```sh
+make docker-run CONN="Server=ADRES_SERWERA,PORT;User Id=SA;Password=TwojeHaslo!;Encrypt=False;TrustServerCertificate=True;"
+```
+
+---
 
 ## Uruchomienie przez Docker Compose
 
