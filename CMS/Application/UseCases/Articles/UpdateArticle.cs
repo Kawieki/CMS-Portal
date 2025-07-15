@@ -36,7 +36,7 @@ public class UpdateArticle
         
         string? newSlug = null;
         
-        if (dto.Title != null && dto.Title != article.Title)
+        if (dto.Title != article.Title)
         {
             newSlug = await _slugService.GenerateUniqueSlugAsync(dto.Title);
         }
