@@ -2,7 +2,6 @@ using Domain.Interfaces;
 using Moq;
 using Application.UseCases.Articles;
 using Domain.Entities;
-using Domain.Enums;
 using Domain.Services;
 
 namespace Tests;
