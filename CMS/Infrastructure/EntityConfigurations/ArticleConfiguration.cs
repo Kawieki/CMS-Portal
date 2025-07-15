@@ -33,9 +33,7 @@ namespace Infrastructure.EntityConfigurations
             builder.Property(a => a.CreatedAt)
                 .IsRequired();
 
-            builder.Property(a => a.CategoryId)
-                .IsRequired();
-            
+            builder.Property(a => a.CategoryId);
         }
     }
 }
