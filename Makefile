@@ -1,14 +1,14 @@
 build:
-	dotnet build CMS.sln
+	dotnet build cms/CMS.sln
 
 test:
-	dotnet test Tests/Tests.csproj
+	dotnet test cms/Tests/Tests.csproj
 
 run:
-	dotnet run --project Api/Api.csproj
+	dotnet run --project cms/Api/Api.csproj
 
 docker-build:
 	docker build -t cms-portal .
 
 docker-run:
-	docker run -p 5001:80 cms-portal 
+	docker run -p 5001:80 cms-portal
