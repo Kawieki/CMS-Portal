@@ -64,7 +64,7 @@ Aplikacja CMS do zarządzania artykułami i kategoriami, napisana w .NET 8 z zgo
    ```sh
    make docker-run
    ```
-3. Aplikacja dostępna pod: [http://localhost:5001/swagger](http://localhost:5001/swagger)
+3. Aplikacja dostępna pod: [http://localhost:5001]
 
 ---
 
