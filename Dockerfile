@@ -1,7 +1,7 @@
 # build
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY cms/ .          
+COPY CMS/ .          
 RUN dotnet restore CMS.sln
 RUN dotnet publish Api/Api.csproj -c Release -o /app/publish
 
